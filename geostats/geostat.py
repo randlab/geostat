@@ -363,7 +363,7 @@ def ordinary_kriging_covariance(x, v, xu, covar):
     # Computes the kriging variance for each unknown point
     so = np.diag(np.dot(np.transpose(w), b[0:n_data, :]))
     so.shape = (n_unknown, 1)
-    so = so + covar._sill - mu
+    so = -so + covar._sill - mu
 
     return vo, so
 
