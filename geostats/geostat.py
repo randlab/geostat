@@ -345,8 +345,8 @@ def ordinary_kriging_covariance(x, v, xu, covar):
     b[0:n_data, 0:n_unknown] = c[n_unknown:n_total, 0:n_unknown]
 
     # Solve the Kriging system
-    l = np.dot(np.linalg.inv(a), b)
-
+    l=np.linalg.solve(a,b)
+    
     # Get the Kriging weight for each data point
     w = l[0:n_data, 0:n_unknown]
 
@@ -363,7 +363,7 @@ def ordinary_kriging_covariance(x, v, xu, covar):
     # Computes the kriging variance for each unknown point
     so = np.diag(np.dot(np.transpose(w), b[0:n_data, :]))
     so.shape = (n_unknown, 1)
-    so = so + covar._sill - mu
+    so = -so + covar._sill - mu
 
     return vo, so
 
@@ -404,7 +404,7 @@ def ordinary_kriging_variogram(x, v, xu, vario):
     b[0:n_data, 0:n_unknown] = g[n_unknown:n_total, 0:n_unknown]
 
     # Solve the Kriging system
-    l = np.dot(np.linalg.inv(a), b)
+    l=np.linalg.solve(a,b)
 
     # Get the Kriging weight for each data point
     w = l[0:n_data, 0:n_unknown]
