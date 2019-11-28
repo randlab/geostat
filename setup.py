@@ -7,5 +7,5 @@ setup(name='geostats',
       author='Philippe Renard',
       author_email='philippe.renard@unine.ch',
       license='MIT',
-      packages=['geostat'],
+      packages=['geostats'],
       zip_safe=False)
