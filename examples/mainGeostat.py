@@ -9,7 +9,7 @@ X = np.zeros((n,2))         # Assembles these values as a 2 D coordinate matrix 
 X[:,0] = x
 
 
-covar = geo.covariance(rang=30, sill=4,typ="spherical")
+covar = geo.Covariance(rang=30, sill=4,typ="spherical")
 y = geo.unconditionnal_lu( X, covar , nsimuls=3 )
 
 fig, ax = plt.subplots()

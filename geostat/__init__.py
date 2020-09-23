@@ -1,1 +1,1 @@
-from ./geostats import *
+from geostat.base import *
